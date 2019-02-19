@@ -1258,7 +1258,7 @@ static int __Pyx_check_binary_version(void);
 
 #if !defined(__Pyx_PyIdentifier_FromString)
 #if PY_MAJOR_VERSION < 3
-  #define __Pyx_PyIdentifier_FromString(s) PyString_FromString(s)
+  #define __Pyx_PyIdentifier_FromString(s) PyUnicode_FromString(s)
 #else
   #define __Pyx_PyIdentifier_FromString(s) PyUnicode_FromString(s)
 #endif
@@ -5953,12 +5953,12 @@ static PyObject *__pyx_pf_7potrace_8_potrace_potracelib_version(CYTHON_UNUSED Py
   /* "potrace/_potrace.pyx":348
  *     Return the potrace library version.
  *     """
- *     return PyString_FromString(potrace_version())             # <<<<<<<<<<<<<<
+ *     return PyUnicode_FromString(potrace_version())             # <<<<<<<<<<<<<<
  * 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyString_FromString(potrace_version()); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 348; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyUnicode_FromString(potrace_version()); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 348; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10323,7 +10323,7 @@ PyMODINIT_FUNC PyInit__potrace(void)
   /* "potrace/_potrace.pyx":1
  * cimport numpy as np             # <<<<<<<<<<<<<<
  * cimport stdlib
- * from python_string cimport PyString_FromString
+ * from python_string cimport PyUnicode_FromString
  */
   __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
@@ -10622,7 +10622,7 @@ static void __Pyx_WriteUnraisable(const char *name, CYTHON_UNUSED int clineno,
         PyErr_PrintEx(1);
     }
     #if PY_MAJOR_VERSION < 3
-    ctx = PyString_FromString(name);
+    ctx = PyUnicode_FromString(name);
     #else
     ctx = PyUnicode_FromString(name);
     #endif
@@ -11532,7 +11532,7 @@ static PyCodeObject* __Pyx_CreateCodeObjectForTraceback(
     PyObject *py_srcfile = 0;
     PyObject *py_funcname = 0;
     #if PY_MAJOR_VERSION < 3
-    py_srcfile = PyString_FromString(filename);
+    py_srcfile = PyUnicode_FromString(filename);
     #else
     py_srcfile = PyUnicode_FromString(filename);
     #endif
@@ -11546,7 +11546,7 @@ static PyCodeObject* __Pyx_CreateCodeObjectForTraceback(
     }
     else {
         #if PY_MAJOR_VERSION < 3
-        py_funcname = PyString_FromString(funcname);
+        py_funcname = PyUnicode_FromString(funcname);
         #else
         py_funcname = PyUnicode_FromString(funcname);
         #endif
@@ -12676,7 +12676,7 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t) {
         } else if (t->intern) {
             *t->p = PyString_InternFromString(t->s);
         } else {
-            *t->p = PyString_FromStringAndSize(t->s, t->n - 1);
+            *t->p = PyUnicode_FromStringAndSize(t->s, t->n - 1);
         }
         #else
         if (t->is_unicode | t->is_str) {
